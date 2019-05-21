@@ -1,0 +1,57 @@
+{
+	"newuser":{
+		"basics":{
+        
+        "name": "Jatin Prakash",
+        "age": "19",
+        "entryno":"2018CS10344",
+        "dob": "15-11-1999",
+       " email": "jatin@gmail.com",
+        "phone": "12345",
+        "website": "jatin.com",
+        
+        "location":{
+            "address":"3rd Street",
+            "postalcode": "11005",
+            "country": "India",
+            "state": "Delhi",
+            "city": "New Delhi"
+
+        }
+    },
+    
+    "profiles":[
+        {
+            "network": "facebook",
+            "username": "jatin1511",
+            "url": "fb.com/jatin1511"
+        },
+        {
+            "network": "Twitter",
+            "username": "jatin15",
+            "url": "twitter.com/jatin15"
+        }
+    ],
+
+    "education":[
+        {
+            "institution": "IIT Delhi",
+            "discipline": "cs",
+            "type": "4 yers",
+            "startdate": "1-7-2018",
+            "enddate": "1-7-2022",
+            "cgpa": "9.3",
+            "maxcgpa": "10.00",
+            "courses":[
+                {
+                    "name":"COL100"
+                },
+                {
+                	"name":"MTL101"
+                }
+            ]
+
+        }
+    ]
+	}
+}

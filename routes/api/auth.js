@@ -20,7 +20,7 @@ router.get('/',auth,async (req,res) => {
 })
 
 router.post('/', [
-    check('entryno', "entryno is Required").not().isEmpty(),
+    check('email', "email is Required").not().isEmpty(),
     check('password', "password is Required").not().isEmpty()
 
     //similarly we can add more if we want
@@ -32,8 +32,8 @@ router.post('/', [
 
     try {
         //see if user exists
-        const entryno = req.body.entryno
-        let user = await User.findOne({ 'basics.entryno': entryno })
+        const email = req.body.email
+        let user = await User.findOne({ 'email': email })
 
         if (!user) {
             return res.status(400).json({ errors: [{ msg: "invalid login details" }] })

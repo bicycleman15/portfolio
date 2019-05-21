@@ -12,7 +12,10 @@ router.get('/',function(req,res){
 })
 
 router.post('/',[
-    check('basics.name',"Name is Required").not().isEmpty()
+    check('name',"Name is Required").not().isEmpty(),
+    check('email', "Not Valid Email").isEmail(),  //here we need to add valid IIT email address
+    check('password', "Password is Required").not().isEmpty()
+
     //similarly we can add more if we want
 ],async function(req,res) {
     const errors = validationResult(req)
@@ -22,14 +25,16 @@ router.post('/',[
     
     try{
         //see if user exists
-        const entryno = req.body.basics.entryno
-        let user = await User.findOne({'basics.entryno': entryno})
+        const email = req.body.email
+        let user = await User.findOne({'email': email})
 
         if(user){
             res.status(400).json({errors:[{msg:"user already exists"}]})
         }
 
-        user = new User(req.body)
+        user = new User(req.body)   
+
+        //also need to add email verifier via otp
 
          //encrypt the password using bcrypt
         const salt = await bcrypt.genSalt(10)  //which to use 10 or more than that
@@ -43,7 +48,7 @@ router.post('/',[
         //return webtoken
         const payload = {
             user:{
-                id : user.id
+                id : user.id   //with this we can access req.user.id
             }
         }
 
